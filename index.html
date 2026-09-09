@@ -1,793 +1,211 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<title>HydroGuard — Dam Break Inundation Modelling Console | SIH26161</title>
-<meta name="description" content="HydroGuard — Adaptive multi-fidelity dam break inundation modelling console. Smart India Hackathon 2026, Problem Statement SIH26161, Team Creative Crew.">
-<link rel="icon" href="data:,">
-<link rel="stylesheet" href="css/styles.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HydroGuard — Prototype Collection</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: #07111f;
+      color: #fff;
+      min-height: 100vh;
+      padding: 40px 20px;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: auto;
+    }
+
+    .hero {
+      text-align: center;
+      margin-bottom: 45px;
+    }
+
+    .hero h1 {
+      font-size: 42px;
+      margin-bottom: 12px;
+    }
+
+    .hero p {
+      color: #9fb0c5;
+      font-size: 17px;
+    }
+
+    .badge {
+      display: inline-block;
+      margin-bottom: 18px;
+      padding: 7px 14px;
+      border: 1px solid #285477;
+      border-radius: 20px;
+      color: #5fc9ff;
+      font-size: 13px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 18px;
+    }
+
+    .card {
+      background: #0d1b2c;
+      border: 1px solid #1c344d;
+      border-radius: 14px;
+      padding: 24px;
+      transition: 0.2s;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      border-color: #3aa7dc;
+    }
+
+    .number {
+      color: #55c7ff;
+      font-size: 13px;
+      font-weight: bold;
+    }
+
+    .card h2 {
+      font-size: 19px;
+      margin: 10px 0;
+    }
+
+    .card p {
+      color: #91a4b9;
+      font-size: 14px;
+      line-height: 1.5;
+      min-height: 42px;
+    }
+
+    .btn {
+      display: inline-block;
+      margin-top: 18px;
+      padding: 10px 15px;
+      background: #123c59;
+      color: white;
+      text-decoration: none;
+      border-radius: 8px;
+      font-size: 14px;
+    }
+
+    .btn:hover {
+      background: #18577f;
+    }
+
+    .footer {
+      text-align: center;
+      margin-top: 45px;
+      color: #708398;
+      font-size: 13px;
+    }
+  </style>
 </head>
+
 <body>
-<div class="bg-field" aria-hidden="true"></div>
 
-<div class="app-shell">
+<div class="container">
 
-  <!-- ============================== TOP BAR ============================== -->
-  <header class="topbar">
-    <button class="nav-toggle" id="navToggle" type="button" aria-label="Toggle navigation menu">
-      <span data-icon="menu"></span>
-    </button>
+  <div class="hero">
+    <div class="badge">SIH 2026 • PS 26161</div>
 
-    <div class="brand">
-      <div class="brand-mark" aria-hidden="true">
-        <svg viewBox="0 0 40 40" width="34" height="34">
-          <defs>
-            <linearGradient id="markGrad" x1="0" y1="0" x2="1" y2="1">
-              <stop offset="0" stop-color="#3e7bfa"/>
-              <stop offset="1" stop-color="#2dd4ee"/>
-            </linearGradient>
-          </defs>
-          <rect x="0.5" y="0.5" width="39" height="39" rx="10" fill="#0d1a2b" stroke="rgba(148,178,214,0.25)"/>
-          <path d="M24 11.5a9 9 0 1 0 0 17" fill="none" stroke="url(#markGrad)" stroke-width="3" stroke-linecap="round"/>
-          <path d="M17.4 15.5a5.4 5.4 0 1 0 0 9" fill="none" stroke="url(#markGrad)" stroke-width="2.4" stroke-linecap="round" opacity="0.85"/>
-        </svg>
-      </div>
-      <div class="brand-text">
-        <span class="brand-name">HydroGuard</span>
-        <span class="brand-sub">Dam Break Inundation Console</span>
-      </div>
+    <h1>HydroGuard</h1>
+
+    <p>
+      Dam-Break Hydrodynamic Flood Simulation
+      <br>
+      <span>Creative Crew — Prototype Collection</span>
+    </p>
+  </div>
+
+  <div class="grid">
+
+    <div class="card">
+      <span class="number">01</span>
+      <h2>Mission Control</h2>
+      <p>Complete command-center dashboard for flood simulation.</p>
+      <a class="btn" href="10_prototypes/01-mission-control/">Open Prototype →</a>
     </div>
 
-    <div class="topbar-tags">
-      <span class="chip">SIH <b>26161</b></span>
-      <span class="chip"><b>Creative Crew</b></span>
+    <div class="card">
+      <span class="number">02</span>
+      <h2>GIS First</h2>
+      <p>Map-first flood visualization and spatial analysis.</p>
+      <a class="btn" href="10_prototypes/02-gis-first/">Open Prototype →</a>
     </div>
 
-    <div class="topbar-spacer"></div>
-
-    <div class="status-pill" id="topStatusPill">
-      <span class="status-dot" id="topStatusDot"></span>
-      <span id="topStatusText" class="full">Idle — no active run</span>
+    <div class="card">
+      <span class="number">03</span>
+      <h2>Scientific Lab</h2>
+      <p>Scientific interface for hydrodynamic modelling.</p>
+      <a class="btn" href="10_prototypes/03-scientific-lab/">Open Prototype →</a>
     </div>
 
-    <div class="menu-wrap" style="position:relative;">
-      <button class="icon-btn" id="settingsBtn" type="button" aria-label="Console settings">
-        <span data-icon="settings"></span>
-      </button>
-      <div class="dropdown" id="settingsDropdown">
-        <div class="dropdown-title">Console settings</div>
-        <div class="dropdown-sub">Prototype build · SIH26161</div>
-        <hr>
-        <button class="dropdown-action" type="button" id="resetDemoBtn"><span data-icon="refresh"></span>Reset demo data</button>
-        <button class="dropdown-action" type="button" data-nav="about"><span data-icon="book"></span>About / Methodology</button>
-        <hr>
-        <div class="dropdown-sub">HydroGuard v0.9 — software-only MVP. All simulation figures are illustrative demo data.</div>
-      </div>
+    <div class="card">
+      <span class="number">04</span>
+      <h2>Emergency Response</h2>
+      <p>Disaster-response focused flood monitoring interface.</p>
+      <a class="btn" href="10_prototypes/04-emergency-response/">Open Prototype →</a>
     </div>
 
-    <div class="menu-wrap" style="position:relative;">
-      <div class="avatar-cc" id="avatarBtn" role="button" tabindex="0" aria-label="Team info">CC</div>
-      <div class="dropdown" id="avatarDropdown">
-        <div class="dropdown-title">Creative Crew</div>
-        <div class="dropdown-sub">Problem Statement SIH26161</div>
-        <hr>
-        <div class="dropdown-sub">Project: HydroGuard<br>Track: Software · Disaster Management<br>Build: Prototype / MVP, demo data only</div>
-      </div>
+    <div class="card">
+      <span class="number">05</span>
+      <h2>Minimal Pro</h2>
+      <p>Clean and professional flood simulation dashboard.</p>
+      <a class="btn" href="10_prototypes/05-minimal-pro/">Open Prototype →</a>
     </div>
-  </header>
 
-  <!-- ============================== SIDEBAR ============================== -->
-  <nav class="sidebar" id="sidebar" aria-label="Primary">
-    <div class="nav-group-label">Console</div>
-    <ul class="nav-list" id="navList">
-      <li><button class="nav-link active" data-view="dashboard" type="button"><span data-icon="grid"></span><span>Mission Control</span></button></li>
-      <li><button class="nav-link" data-view="scenario" type="button"><span data-icon="sliders"></span><span>Scenario Builder</span></button></li>
-      <li><button class="nav-link" data-view="simulation" type="button" id="navSimulation"><span data-icon="cpu"></span><span>Simulation</span><span class="nav-badge" id="navSimBadge" style="display:none;">LIVE</span></button></li>
-      <li><button class="nav-link" data-view="floodmap" type="button"><span data-icon="map"></span><span>Flood Map</span></button></li>
-      <li><button class="nav-link" data-view="results" type="button"><span data-icon="barchart"></span><span>Results</span></button></li>
-      <li><button class="nav-link" data-view="risk" type="button"><span data-icon="shield"></span><span>Risk Analysis</span></button></li>
-      <li><button class="nav-link" data-view="benchmark" type="button"><span data-icon="zap"></span><span>Benchmark</span></button></li>
-      <li><button class="nav-link" data-view="report" type="button"><span data-icon="filetext"></span><span>Reports</span></button></li>
-      <li><button class="nav-link" data-view="about" type="button"><span data-icon="book"></span><span>Methodology</span></button></li>
-    </ul>
-    <div class="sidebar-footer">
-      <div><b>HydroGuard</b> v0.9 — Prototype build</div>
-      <div>Software-only MVP · Demo data</div>
+    <div class="card">
+      <span class="number">06</span>
+      <h2>3D Terrain</h2>
+      <p>Terrain-focused visualization concept.</p>
+      <a class="btn" href="10_prototypes/06-3d-terrain/">Open Prototype →</a>
     </div>
-  </nav>
-  <div class="sidebar-backdrop" id="sidebarBackdrop"></div>
 
-  <!-- ============================== MAIN ============================== -->
-  <main class="main" id="main">
+    <div class="card">
+      <span class="number">07</span>
+      <h2>Data Analytics</h2>
+      <p>Simulation metrics and performance analytics.</p>
+      <a class="btn" href="10_prototypes/07-data-analytics/">Open Prototype →</a>
+    </div>
+
+    <div class="card">
+      <span class="number">08</span>
+      <h2>Mobile First</h2>
+      <p>Responsive interface for mobile flood monitoring.</p>
+      <a class="btn" href="10_prototypes/08-mobile-first/">Open Prototype →</a>
+    </div>
+
+    <div class="card">
+      <span class="number">09</span>
+      <h2>AI Assisted</h2>
+      <p>AI-assisted scenario configuration and analysis.</p>
+      <a class="btn" href="10_prototypes/09-ai-assisted/">Open Prototype →</a>
+    </div>
+
+    <div class="card">
+      <span class="number">10</span>
+      <h2>SIH Showcase</h2>
+      <p>Presentation-ready HydroGuard showcase.</p>
+      <a class="btn" href="10_prototypes/10-sih-showcase/">Open Prototype →</a>
+    </div>
+
+  </div>
+
+  <div class="footer">
+    HydroGuard • SIH 26161 • Creative Crew
+  </div>
 
-    <!-- ========================================================= -->
-    <!-- VIEW: MISSION CONTROL DASHBOARD                            -->
-    <!-- ========================================================= -->
-    <section class="view active" id="view-dashboard">
-      <div class="view-head">
-        <div>
-          <div class="view-eyebrow">Mission control</div>
-          <h1 class="view-title">Dam Break Inundation Overview</h1>
-          <p class="view-desc">Live status of the current scenario, key flood metrics, and recent simulation runs.</p>
-        </div>
-        <div class="view-actions">
-          <button class="btn btn-secondary" id="rerunBtn" type="button" disabled><span data-icon="refresh"></span>Re-run last scenario</button>
-          <button class="btn btn-primary" data-nav="scenario" type="button"><span data-icon="sliders"></span>Configure simulation</button>
-        </div>
-      </div>
-
-      <!-- flow banner -->
-      <div class="panel" style="margin-bottom:18px;">
-        <div class="flow-banner">
-          <div class="flow-step" data-nav="scenario">
-            <div class="fi"><span data-icon="sliders"></span></div>
-            <div><div class="ft">Dam break input</div><div class="fs">Breach &amp; reservoir parameters</div></div>
-          </div>
-          <div class="flow-arrow"><span data-icon="chevronright"></span></div>
-          <div class="flow-step" data-nav="simulation">
-            <div class="fi"><span data-icon="cpu"></span></div>
-            <div><div class="ft">Adaptive simulation</div><div class="fs">Fast solver + full 2D SWE</div></div>
-          </div>
-          <div class="flow-arrow"><span data-icon="chevronright"></span></div>
-          <div class="flow-step" data-nav="results">
-            <div class="fi"><span data-icon="droplet"></span></div>
-            <div><div class="ft">Depth · velocity · arrival</div><div class="fs">Peak flood indicators</div></div>
-          </div>
-          <div class="flow-arrow"><span data-icon="chevronright"></span></div>
-          <div class="flow-step" data-nav="risk">
-            <div class="fi"><span data-icon="shield"></span></div>
-            <div><div class="ft">Risk &amp; critical assets</div><div class="fs">Exposure by location</div></div>
-          </div>
-        </div>
-      </div>
-
-      <div class="grid grid-12">
-        <div class="g-3"><div class="kpi tone-blue" id="kpiStatus">
-          <div class="kpi-top"><span class="kpi-label">Simulation status</span><div class="kpi-icon"><span data-icon="pulse"></span></div></div>
-          <div style="margin-top:12px;"><span class="badge badge-idle" id="kpiStatusBadge">Idle</span></div>
-          <div class="kpi-foot" id="kpiStatusSub">No run started yet</div>
-        </div></div>
-
-        <div class="g-3"><div class="kpi" id="kpiDepth">
-          <div class="kpi-top"><span class="kpi-label">Max flood depth</span><div class="kpi-icon"><span data-icon="droplet"></span></div></div>
-          <div class="kpi-value" id="kpiDepthVal">—<span class="unit">m</span></div>
-          <div class="kpi-foot" id="kpiDepthSub">Run a simulation to populate</div>
-        </div></div>
-
-        <div class="g-3"><div class="kpi tone-safe" id="kpiVelocity">
-          <div class="kpi-top"><span class="kpi-label">Max velocity</span><div class="kpi-icon"><span data-icon="gauge"></span></div></div>
-          <div class="kpi-value" id="kpiVelocityVal">—<span class="unit">m/s</span></div>
-          <div class="kpi-foot" id="kpiVelocitySub">Run a simulation to populate</div>
-        </div></div>
-
-        <div class="g-3"><div class="kpi tone-warn" id="kpiArrival">
-          <div class="kpi-top"><span class="kpi-label">Flood arrival time</span><div class="kpi-icon"><span data-icon="clock"></span></div></div>
-          <div class="kpi-value" id="kpiArrivalVal">—<span class="unit">min</span></div>
-          <div class="kpi-foot" id="kpiArrivalSub">Run a simulation to populate</div>
-        </div></div>
-
-        <div class="g-7"><div class="panel">
-          <div class="panel-head"><h3>Current scenario</h3><span class="hint">Editable in Scenario Builder</span></div>
-          <div class="panel-body">
-            <div class="kv-list" id="scenarioSummary"><!-- populated by JS --></div>
-          </div>
-        </div></div>
-
-        <div class="g-5"><div class="panel">
-          <div class="panel-head"><h3>Live flood map preview</h3><span class="badge badge-demo">DEMO</span></div>
-          <div class="panel-body tight">
-            <div class="map-frame mini-map-card">
-              <div class="map-svg-wrap" id="miniMapPreview"></div>
-              <div class="map-demo-tag"><span class="badge badge-demo">DEMO DATA</span></div>
-            </div>
-            <button class="btn btn-ghost btn-block" style="margin-top:12px;" data-nav="floodmap" type="button"><span data-icon="map"></span>Open full flood map</button>
-          </div>
-        </div></div>
-
-        <div class="g-12"><div class="panel">
-          <div class="panel-head"><h3>Recent simulation runs</h3><span class="hint">Click a run to load it into Results</span></div>
-          <div class="panel-body" id="recentRunsBody">
-            <div class="empty-state" id="recentRunsEmpty">
-              <span data-icon="cpu"></span>
-              <div class="t">No simulations run yet</div>
-              <div class="d">Configure a scenario and run your first simulation to see it logged here.</div>
-            </div>
-            <div id="recentRunsList" style="display:none;"></div>
-          </div>
-        </div></div>
-      </div>
-    </section>
-
-    <!-- ========================================================= -->
-    <!-- VIEW: SCENARIO BUILDER                                     -->
-    <!-- ========================================================= -->
-    <section class="view" id="view-scenario">
-      <div class="view-head">
-        <div>
-          <div class="view-eyebrow">Scenario builder</div>
-          <h1 class="view-title">Configure Dam Break Scenario</h1>
-          <p class="view-desc">Set breach and reservoir parameters, choose input datasets, and select a simulation fidelity mode.</p>
-        </div>
-      </div>
-
-      <div class="grid grid-12">
-        <div class="g-7 stack">
-          <div class="panel">
-            <div class="panel-head"><h3>Dam &amp; breach parameters</h3><span class="hint">Values update live</span></div>
-            <div class="panel-body">
-              <div class="field">
-                <div class="field-label"><span>Dam height</span><span class="val" id="valDamHeight">42 m</span></div>
-                <input type="range" id="inDamHeight" min="10" max="80" step="1" value="42">
-                <div class="field-hint">Height of the dam structure above the streambed.</div>
-              </div>
-              <div class="field">
-                <div class="field-label"><span>Breach width</span><span class="val" id="valBreachWidth">120 m</span></div>
-                <input type="range" id="inBreachWidth" min="20" max="300" step="5" value="120">
-                <div class="field-hint">Final width of the breach opening.</div>
-              </div>
-              <div class="field">
-                <div class="field-label"><span>Breach formation time</span><span class="val" id="valBreachTime">15 min</span></div>
-                <input type="range" id="inBreachTime" min="5" max="60" step="1" value="15">
-                <div class="field-hint">Time for the breach to fully develop.</div>
-              </div>
-              <div class="field">
-                <div class="field-label"><span>Initial reservoir water level</span><span class="val" id="valWaterLevel">38 m</span></div>
-                <input type="range" id="inWaterLevel" min="10" max="70" step="1" value="38">
-                <div class="field-hint">Water surface elevation above the streambed at breach initiation.</div>
-              </div>
-              <div class="field" style="margin-bottom:0;">
-                <div class="field-label"><span>Simulation duration</span><span class="val" id="valDuration">6 hr</span></div>
-                <input type="range" id="inDuration" min="1" max="24" step="1" value="6">
-                <div class="field-hint">Total modelled time after breach initiation.</div>
-              </div>
-            </div>
-          </div>
-
-          <div class="panel">
-            <div class="panel-head"><h3>Terrain &amp; hydrological data</h3><span class="hint">Demo datasets</span></div>
-            <div class="panel-body">
-              <div class="field">
-                <div class="field-label"><span>DEM data</span></div>
-                <select class="select" id="inDem">
-                  <option>Bhagirathi_Basin_DEM_30m.tif (Demo)</option>
-                  <option>Ganga_Upper_Reach_DEM_12m.tif (Demo)</option>
-                  <option value="custom">Custom upload…</option>
-                </select>
-                <div class="file-row" id="demFileRow" style="display:none; margin-top:8px;">
-                  <input class="input" id="demFileName" placeholder="No file selected" readonly>
-                  <button class="btn btn-secondary btn-sm" type="button" id="demBrowseBtn"><span data-icon="upload"></span>Browse</button>
-                  <input type="file" id="demFileInput" style="display:none;">
-                </div>
-              </div>
-              <div class="field" style="margin-bottom:0;">
-                <div class="field-label"><span>River / terrain network</span></div>
-                <select class="select" id="inRiver">
-                  <option>Bhagirathi_River_Centerline (Demo)</option>
-                  <option>Alaknanda_Confluence_Network (Demo)</option>
-                  <option value="custom">Custom upload…</option>
-                </select>
-                <div class="file-row" id="riverFileRow" style="display:none; margin-top:8px;">
-                  <input class="input" id="riverFileName" placeholder="No file selected" readonly>
-                  <button class="btn btn-secondary btn-sm" type="button" id="riverBrowseBtn"><span data-icon="upload"></span>Browse</button>
-                  <input type="file" id="riverFileInput" style="display:none;">
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="g-5 stack">
-          <div class="panel">
-            <div class="panel-head"><h3>Simulation mode</h3></div>
-            <div class="panel-body">
-              <div class="segmented" id="modeSegmented">
-                <button type="button" class="active" data-mode="rapid">Rapid</button>
-                <button type="button" data-mode="balanced">Balanced</button>
-                <button type="button" data-mode="high">High accuracy</button>
-              </div>
-              <p class="mode-desc" id="modeDesc"></p>
-              <div class="readout-grid" style="margin-top:16px;">
-                <div class="readout"><div class="rlabel">Est. grid cells</div><div class="rval" id="modeCells">—</div></div>
-                <div class="readout"><div class="rlabel">Est. runtime</div><div class="rval" id="modeRuntime">—</div></div>
-                <div class="readout"><div class="rlabel">Full-SWE coverage</div><div class="rval" id="modeCoverage">—</div></div>
-              </div>
-              <div class="field-hint" style="margin-top:10px;">Estimates are illustrative for this prototype — see Benchmark for details.</div>
-            </div>
-          </div>
-
-          <div class="panel panel-pad">
-            <button class="btn btn-primary btn-block" id="runSimBtn" type="button" style="padding:14px 16px; font-size:14px;">
-              <span data-icon="play"></span>Run simulation
-            </button>
-            <p class="field-hint" style="margin-top:10px; text-align:center;">Uses demo terrain data · runtime figures are illustrative.</p>
-          </div>
-
-          <div class="notice info">
-            <span data-icon="info"></span>
-            <div>HydroGuard runs a fast solver across the full domain, then automatically escalates to the full 2D shallow water equations near the breach, channel, steep terrain and populated areas. See <a href="#" data-nav="about" style="color:var(--cyan); text-decoration:underline;">Methodology</a> for details.</div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ========================================================= -->
-    <!-- VIEW: SIMULATION (Adaptive engine + Live monitor)          -->
-    <!-- ========================================================= -->
-    <section class="view" id="view-simulation">
-      <div class="view-head">
-        <div>
-          <div class="view-eyebrow">Simulation</div>
-          <h1 class="view-title">Adaptive Multi-Fidelity Engine</h1>
-          <p class="view-desc">HydroGuard balances speed and accuracy automatically — fast broad coverage, full physics where it matters.</p>
-        </div>
-        <div class="view-actions">
-          <span class="badge badge-idle" id="simViewStatusBadge">Idle</span>
-        </div>
-      </div>
-
-      <div class="tabs">
-        <button class="tab-btn active" data-tab="engine" type="button">Engine pipeline</button>
-        <button class="tab-btn" data-tab="live" type="button">Live monitor</button>
-      </div>
-
-      <div class="tab-panel active" id="tab-engine">
-        <div class="panel" style="margin-bottom:16px;">
-          <div class="panel-head"><h3>Adaptive processing pipeline</h3><span class="hint">Stage activates automatically during a run</span></div>
-          <div class="panel-body">
-            <div class="pipeline" id="pipeline">
-              <!-- populated by JS -->
-            </div>
-          </div>
-        </div>
-
-        <div class="panel" style="margin-bottom:16px;">
-          <div class="panel-head"><h3>Where HydroGuard escalates to full physics</h3></div>
-          <div class="panel-body">
-            <div class="zone-chips">
-              <div class="zone-chip"><span data-icon="zap"></span>Breach zone</div>
-              <div class="zone-chip"><span data-icon="waves"></span>River / channel</div>
-              <div class="zone-chip"><span data-icon="mountain"></span>Steep terrain</div>
-              <div class="zone-chip"><span data-icon="home"></span>High-risk populated areas</div>
-            </div>
-            <p style="font-size:12.5px; color:var(--ink-3); margin-top:14px; line-height:1.7; max-width:74ch;">
-              These regions carry the greatest consequence if the fast solver's simplifying assumptions break down, so HydroGuard's accuracy check routes them to the full 2D shallow water equation solver while calmer, low-consequence areas continue on the faster solver. Grid resolution tightens in the same regions through adaptive refinement.
-            </p>
-          </div>
-        </div>
-
-        <div class="notice info">
-          <span data-icon="info"></span>
-          <div>This pipeline illustrates the adaptive workflow. Stage timing shown during a live run is a simplified prototype animation, not measured solver performance.</div>
-        </div>
-      </div>
-
-      <div class="tab-panel" id="tab-live">
-        <div id="liveEmpty" class="panel">
-          <div class="empty-state">
-            <span data-icon="cpu"></span>
-            <div class="t">No simulation running</div>
-            <div class="d">Start a run from Scenario Builder to see live progress, solver status and grid statistics here.</div>
-            <button class="btn btn-primary" data-nav="scenario" type="button" style="margin-top:14px;"><span data-icon="sliders"></span>Open Scenario Builder</button>
-          </div>
-        </div>
-
-        <div id="liveContent" style="display:none;">
-          <div class="panel" style="margin-bottom:16px;">
-            <div class="panel-body">
-              <div class="between" style="margin-bottom:12px;">
-                <span class="badge" id="liveStatusBadge">Running</span>
-                <span class="micro-label" id="liveProgressPct">0%</span>
-              </div>
-              <div class="progress-track"><div class="progress-fill" id="liveProgressFill"></div></div>
-              <div class="readout-grid" style="margin-top:16px;">
-                <div class="readout"><div class="rlabel">Sim time elapsed</div><div class="rval" id="liveSimTime">0.0 / 6.0 hr</div></div>
-                <div class="readout"><div class="rlabel">Processing status</div><div class="rval" id="liveStage">Input Data</div></div>
-                <div class="readout"><div class="rlabel">Grid resolution</div><div class="rval" id="liveGrid">—</div></div>
-                <div class="readout"><div class="rlabel">Active solver</div><div class="rval" id="liveSolver">—</div></div>
-                <div class="readout"><div class="rlabel">Number of cells</div><div class="rval" id="liveCells">—</div></div>
-                <div class="readout"><div class="rlabel">Computational region</div><div class="rval" id="liveRegion">—</div></div>
-              </div>
-            </div>
-          </div>
-
-          <div class="panel">
-            <div class="panel-head"><h3>Flood spread preview (live)</h3><span class="badge badge-demo">DEMO</span></div>
-            <div class="panel-body tight">
-              <div class="map-frame mini-map-card">
-                <div class="map-svg-wrap" id="liveMapPreview"></div>
-              </div>
-            </div>
-          </div>
-
-          <div class="notice" id="liveCompleteNotice" style="display:none; margin-top:16px;">
-            <span data-icon="checkcircle"></span>
-            <div>Simulation complete. <a href="#" data-nav="results" style="color:var(--ink-1); text-decoration:underline;">View Results</a>, <a href="#" data-nav="floodmap" style="color:var(--ink-1); text-decoration:underline;">open the Flood Map</a>, or check <a href="#" data-nav="risk" style="color:var(--ink-1); text-decoration:underline;">Risk Analysis</a>.</div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ========================================================= -->
-    <!-- VIEW: GIS FLOOD MAP                                        -->
-    <!-- ========================================================= -->
-    <section class="view" id="view-floodmap">
-      <div class="view-head">
-        <div>
-          <div class="view-eyebrow">GIS flood map</div>
-          <h1 class="view-title">Inundation Map</h1>
-          <p class="view-desc">Simulated flood extent, depth, velocity and arrival time over demo terrain.</p>
-        </div>
-        <div class="view-actions"><span class="badge badge-demo">DEMO GIS DATA</span></div>
-      </div>
-
-      <div class="panel">
-        <div class="map-frame" id="mapFrameFull">
-          <div class="map-svg-wrap" id="fullMapSvg"></div>
-
-          <div class="map-topbar">
-            <div class="map-badge-row">
-              <span class="badge badge-demo">DEMO DATA</span>
-              <span class="badge badge-neutral" id="mapModeTag">Balanced mode</span>
-            </div>
-          </div>
-
-          <div class="map-toolbar">
-            <button class="map-btn" id="mapZoomIn" type="button" aria-label="Zoom in"><span data-icon="plus"></span></button>
-            <button class="map-btn" id="mapZoomOut" type="button" aria-label="Zoom out"><span data-icon="minus"></span></button>
-            <button class="map-btn" id="mapLayersBtn" type="button" aria-label="Toggle layers"><span data-icon="layers"></span></button>
-            <button class="map-btn" id="mapFullscreenBtn" type="button" aria-label="Full screen"><span data-icon="maximize"></span></button>
-            <button class="map-btn" id="mapResetBtn" type="button" aria-label="Reset view"><span data-icon="refresh"></span></button>
-          </div>
-
-          <div class="map-layers" id="mapLayersPanel">
-            <div class="lg-title">Layers</div>
-            <label class="layer-row"><input type="checkbox" id="layerDepth" checked>Flood depth</label>
-            <label class="layer-row"><input type="checkbox" id="layerVelocity">Velocity vectors</label>
-            <label class="layer-row"><input type="checkbox" id="layerArrival">Arrival time bands</label>
-            <label class="layer-row"><input type="checkbox" id="layerRoads" checked>Roads</label>
-            <label class="layer-row"><input type="checkbox" id="layerBuildings" checked>Buildings</label>
-            <label class="layer-row"><input type="checkbox" id="layerAssets" checked>Critical assets</label>
-            <label class="layer-row"><input type="checkbox" id="layerRisk">Risk overlay</label>
-          </div>
-
-          <div class="map-legend" id="mapLegend">
-            <div class="lg-title">Flood depth (m)</div>
-            <div class="depth-bar"></div>
-            <div class="depth-ticks"><span>0</span><span>1</span><span>2</span><span>4</span><span>6+</span></div>
-            <div class="legend-rows">
-              <div class="lr"><span class="sw" style="background:#f65b6b;"></span>Dam / breach point</div>
-              <div class="lr"><span class="sw" style="background:#eaf1fb;"></span>Critical asset</div>
-              <div class="lr"><span class="sw" style="background:#6c81a3;"></span>Road</div>
-            </div>
-          </div>
-
-          <div class="map-demo-tag"><span class="badge badge-demo">SIMULATED DATA</span></div>
-        </div>
-      </div>
-
-      <div class="notice info" style="margin-top:16px;">
-        <span data-icon="info"></span>
-        <div>Terrain, river network, asset locations and flood extent shown are illustrative demo data for this prototype — not sourced from a real DEM or field GIS survey.</div>
-      </div>
-    </section>
-
-    <!-- ========================================================= -->
-    <!-- VIEW: RESULTS DASHBOARD                                    -->
-    <!-- ========================================================= -->
-    <section class="view" id="view-results">
-      <div class="view-head">
-        <div>
-          <div class="view-eyebrow">Results</div>
-          <h1 class="view-title">Flood Simulation Results</h1>
-          <p class="view-desc">Peak indicators and time-series output from the most recently loaded simulation run.</p>
-        </div>
-        <div class="view-actions"><span class="badge badge-neutral" id="resultsRunTag">No run loaded</span></div>
-      </div>
-
-      <div id="resultsEmpty">
-        <div class="panel"><div class="empty-state">
-          <span data-icon="barchart"></span>
-          <div class="t">No results yet</div>
-          <div class="d">Run a simulation from Scenario Builder to populate flood statistics and charts.</div>
-          <button class="btn btn-primary" data-nav="scenario" type="button" style="margin-top:14px;"><span data-icon="sliders"></span>Open Scenario Builder</button>
-        </div></div>
-      </div>
-
-      <div id="resultsContent" style="display:none;">
-        <div class="grid grid-12">
-          <div class="g-3"><div class="kpi">
-            <div class="kpi-top"><span class="kpi-label">Max flood depth</span><div class="kpi-icon"><span data-icon="droplet"></span></div></div>
-            <div class="kpi-value" id="resDepth">—<span class="unit">m</span></div>
-            <div class="kpi-foot" id="resDepthSub">—</div>
-          </div></div>
-          <div class="g-3"><div class="kpi tone-safe">
-            <div class="kpi-top"><span class="kpi-label">Max velocity</span><div class="kpi-icon"><span data-icon="gauge"></span></div></div>
-            <div class="kpi-value" id="resVelocity">—<span class="unit">m/s</span></div>
-            <div class="kpi-foot" id="resVelocitySub">—</div>
-          </div></div>
-          <div class="g-3"><div class="kpi tone-warn">
-            <div class="kpi-top"><span class="kpi-label">Earliest arrival</span><div class="kpi-icon"><span data-icon="clock"></span></div></div>
-            <div class="kpi-value" id="resArrival">—<span class="unit">min</span></div>
-            <div class="kpi-foot" id="resArrivalSub">—</div>
-          </div></div>
-          <div class="g-3"><div class="kpi tone-blue">
-            <div class="kpi-top"><span class="kpi-label">Affected area</span><div class="kpi-icon"><span data-icon="maximize"></span></div></div>
-            <div class="kpi-value" id="resArea">—<span class="unit">km²</span></div>
-            <div class="kpi-foot" id="resAreaSub">—</div>
-          </div></div>
-
-          <div class="g-6"><div class="panel">
-            <div class="panel-head"><h3>Water depth over time</h3><span class="hint">Demo series</span></div>
-            <div class="panel-body"><div class="chart-wrap" id="chartDepth"></div></div>
-          </div></div>
-
-          <div class="g-6"><div class="panel">
-            <div class="panel-head"><h3>Flow velocity over time</h3><span class="hint">Demo series</span></div>
-            <div class="panel-body"><div class="chart-wrap" id="chartVelocity"></div></div>
-          </div></div>
-
-          <div class="g-6"><div class="panel">
-            <div class="panel-head"><h3>Arrival time by location</h3><span class="hint">Demo series</span></div>
-            <div class="panel-body"><div class="chart-wrap" id="chartArrival"></div></div>
-          </div></div>
-
-          <div class="g-6"><div class="panel">
-            <div class="panel-head"><h3>Computation timeline</h3><span class="hint">Pipeline stage duration</span></div>
-            <div class="panel-body"><div class="chart-wrap" id="chartTimeline"></div></div>
-          </div></div>
-        </div>
-
-        <div class="notice" style="margin-top:16px;">
-          <span data-icon="alerttriangle"></span>
-          <div>Figures are generated from simplified demo relationships for prototype interactivity — this is not a validated hydrodynamic result.</div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ========================================================= -->
-    <!-- VIEW: RISK & CRITICAL ASSET ANALYSIS                       -->
-    <!-- ========================================================= -->
-    <section class="view" id="view-risk">
-      <div class="view-head">
-        <div>
-          <div class="view-eyebrow">Risk analysis</div>
-          <h1 class="view-title">Risk &amp; Critical Asset Assessment</h1>
-          <p class="view-desc">Exposure of residential areas, roads, bridges and critical infrastructure to the simulated flood.</p>
-        </div>
-        <div class="view-actions"><button class="btn btn-ghost" data-nav="floodmap" type="button"><span data-icon="map"></span>View on flood map</button></div>
-      </div>
-
-      <div class="risk-summary" style="margin-bottom:16px;">
-        <div class="risk-stat low"><div class="n" id="riskCountLow">0</div><div class="l">Low risk assets</div></div>
-        <div class="risk-stat medium"><div class="n" id="riskCountMedium">0</div><div class="l">Medium risk assets</div></div>
-        <div class="risk-stat high"><div class="n" id="riskCountHigh">0</div><div class="l">High risk assets</div></div>
-        <div class="risk-stat critical"><div class="n" id="riskCountCritical">0</div><div class="l">Critical assets</div></div>
-      </div>
-
-      <div class="panel">
-        <div class="panel-head"><h3>Critical asset register</h3><span class="hint" id="riskAssetCount">— assets</span></div>
-        <div class="panel-body" style="overflow-x:auto;">
-          <table class="table">
-            <thead><tr><th>Asset</th><th>Type</th><th>Distance from channel</th><th>Est. depth at site</th><th>Risk level</th></tr></thead>
-            <tbody id="riskTableBody"><!-- populated by JS --></tbody>
-          </table>
-        </div>
-      </div>
-
-      <div class="notice" style="margin-top:16px;">
-        <span data-icon="alerttriangle"></span>
-        <div>Risk levels are computed from simplified demo relationships between simulated flood depth and each asset's approximate exposure. A real deployment would use validated hazard-vulnerability models and field-verified asset data.</div>
-      </div>
-    </section>
-
-    <!-- ========================================================= -->
-    <!-- VIEW: BENCHMARK                                            -->
-    <!-- ========================================================= -->
-    <section class="view" id="view-benchmark">
-      <div class="view-head">
-        <div>
-          <div class="view-eyebrow">Benchmark</div>
-          <h1 class="view-title">Performance &amp; Accuracy — HydroGuard vs Conventional</h1>
-          <p class="view-desc">Illustrative comparison of HydroGuard's adaptive approach against a uniform full-physics run.</p>
-        </div>
-      </div>
-
-      <div class="panel" style="margin-bottom:16px;">
-        <div class="panel-head"><h3>Compare mode</h3><span class="badge badge-demo">DEMO / ILLUSTRATIVE</span></div>
-        <div class="panel-body">
-          <div class="segmented" id="benchModeSegmented" style="max-width:420px;">
-            <button type="button" class="active" data-mode="rapid">Rapid</button>
-            <button type="button" data-mode="balanced">Balanced</button>
-            <button type="button" data-mode="high">High accuracy</button>
-          </div>
-        </div>
-      </div>
-
-      <div class="grid grid-12">
-        <div class="g-6"><div class="panel">
-          <div class="panel-head"><h3>Runtime</h3></div>
-          <div class="panel-body">
-            <div class="bench-track" id="benchRuntime"><!-- JS --></div>
-          </div>
-        </div></div>
-
-        <div class="g-6"><div class="panel">
-          <div class="panel-head"><h3>Grid cells</h3></div>
-          <div class="panel-body">
-            <div class="bench-track" id="benchCells"><!-- JS --></div>
-          </div>
-        </div></div>
-
-        <div class="g-12"><div class="panel">
-          <div class="panel-head"><h3>Comparison summary</h3></div>
-          <div class="panel-body" style="overflow-x:auto;">
-            <table class="table">
-              <thead><tr><th>Metric</th><th>HydroGuard (selected mode)</th><th>Conventional full 2D SWE</th><th>Note</th></tr></thead>
-              <tbody id="benchTableBody"><!-- JS --></tbody>
-            </table>
-          </div>
-        </div></div>
-      </div>
-
-      <div class="notice" style="margin-top:16px;">
-        <span data-icon="alerttriangle"></span>
-        <div>All figures on this screen are DEMO / ILLUSTRATIVE values for prototype presentation. They are not measured performance results and should not be cited as validated benchmarks.</div>
-      </div>
-    </section>
-
-    <!-- ========================================================= -->
-    <!-- VIEW: SIMULATION REPORT                                    -->
-    <!-- ========================================================= -->
-    <section class="view" id="view-report">
-      <div class="view-head">
-        <div>
-          <div class="view-eyebrow">Reports</div>
-          <h1 class="view-title">Simulation Report</h1>
-          <p class="view-desc">A print-ready summary of scenario parameters, flood statistics, risk and performance.</p>
-        </div>
-        <div class="view-actions">
-          <button class="btn btn-secondary" id="printReportBtn" type="button"><span data-icon="printer"></span>Print / export PDF</button>
-          <button class="btn btn-primary" id="downloadReportBtn" type="button"><span data-icon="download"></span>Download report</button>
-        </div>
-      </div>
-
-      <div id="reportEmpty">
-        <div class="panel"><div class="empty-state">
-          <span data-icon="filetext"></span>
-          <div class="t">No report available yet</div>
-          <div class="d">Run a simulation first — the report is generated from the most recently loaded run.</div>
-          <button class="btn btn-primary" data-nav="scenario" type="button" style="margin-top:14px;"><span data-icon="sliders"></span>Open Scenario Builder</button>
-        </div></div>
-      </div>
-
-      <div id="reportContent" style="display:none;">
-        <div class="report-preview">
-          <div class="report-page">
-            <div class="report-masthead">
-              <div>
-                <h2>Dam Break Inundation Simulation Report</h2>
-                <div class="sub">HydroGuard · SIH26161 · Team Creative Crew · Software prototype</div>
-              </div>
-              <div class="report-meta">
-                Generated: <span id="repGenerated">—</span><br>
-                Run ID: <span id="repRunId">—</span><br>
-                Mode: <span id="repMode">—</span>
-              </div>
-            </div>
-
-            <div class="report-section">
-              <h4>Scenario parameters</h4>
-              <table class="report-table" id="repScenarioTable"><!-- JS --></table>
-            </div>
-
-            <div class="report-section">
-              <h4>Flood statistics</h4>
-              <div class="report-grid" id="repStatsGrid"><!-- JS --></div>
-            </div>
-
-            <div class="report-section">
-              <h4>Risk summary</h4>
-              <div class="report-grid" id="repRiskGrid"><!-- JS --></div>
-              <table class="report-table" id="repTopAssets" style="margin-top:10px;"><!-- JS --></table>
-            </div>
-
-            <div class="report-section">
-              <h4>Map snapshot — demo / illustrative</h4>
-              <div class="map-frame" style="max-width:520px;">
-                <div class="map-svg-wrap" id="reportMapSnapshot" style="aspect-ratio:4/3;"></div>
-              </div>
-            </div>
-
-            <div class="report-section">
-              <h4>Performance summary — demo / illustrative</h4>
-              <table class="report-table" id="repPerfTable"><!-- JS --></table>
-            </div>
-
-            <p style="font-size:10.5px; color:var(--ink-4); border-top:1px solid var(--line); padding-top:12px;">
-              Generated by the HydroGuard prototype — Team Creative Crew — SIH26161. All figures illustrative for demonstration purposes unless otherwise validated.
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ========================================================= -->
-    <!-- VIEW: ABOUT / METHODOLOGY                                  -->
-    <!-- ========================================================= -->
-    <section class="view" id="view-about">
-      <div class="view-head">
-        <div>
-          <div class="view-eyebrow">Methodology</div>
-          <h1 class="view-title">Adaptive Multi-Fidelity Flood Engine</h1>
-          <p class="view-desc">How HydroGuard balances computational speed with hydrodynamic accuracy.</p>
-        </div>
-      </div>
-
-      <div class="grid grid-12">
-        <div class="g-8">
-          <div class="panel">
-            <div class="panel-body">
-              <div class="method-step">
-                <div class="method-num">01</div>
-                <div class="method-body"><h4>Fast solver across the full domain</h4><p>A computationally light solver covers the entire modelled area quickly, giving an initial picture of flood extent, depth and timing.</p></div>
-              </div>
-              <div class="method-step">
-                <div class="method-num">02</div>
-                <div class="method-body"><h4>Full 2D shallow water equations where it matters</h4><p>The breach zone, main channel, steep terrain and populated areas are automatically escalated to the full 2D SWE solver for higher-fidelity results.</p></div>
-              </div>
-              <div class="method-step">
-                <div class="method-num">03</div>
-                <div class="method-body"><h4>Adaptive grid refinement</h4><p>Grid resolution tightens around high-gradient or high-consequence regions instead of using one fixed resolution across the whole domain.</p></div>
-              </div>
-              <div class="method-step">
-                <div class="method-num">04</div>
-                <div class="method-body"><h4>Accuracy / physics checks</h4><p>Intermediate checkpoints compare fast-solver behaviour against physical plausibility thresholds to decide where escalation is needed.</p></div>
-              </div>
-              <div class="method-step">
-                <div class="method-num">05</div>
-                <div class="method-body"><h4>Software-only, demo-data prototype</h4><p>This SIH26161 build demonstrates the workflow and interface using illustrative terrain, hydrology and performance data. It is not connected to a live DEM or hydrological data pipeline, and reports no hardware dependency.</p></div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="g-4 stack">
-          <div class="panel panel-pad">
-            <h3 style="font-family:var(--f-display); font-size:14px; margin-bottom:12px;">Why adaptive multi-fidelity?</h3>
-            <div class="stack" style="gap:10px;">
-              <div class="row" style="align-items:flex-start; gap:10px;"><span data-icon="checkcircle" style="width:16px;height:16px;flex:none;color:var(--medium);margin-top:2px;"></span><span style="font-size:12.3px;color:var(--ink-2);">Full physics everywhere: accurate, but computationally heavy across low-consequence areas too.</span></div>
-              <div class="row" style="align-items:flex-start; gap:10px;"><span data-icon="checkcircle" style="width:16px;height:16px;flex:none;color:var(--medium);margin-top:2px;"></span><span style="font-size:12.3px;color:var(--ink-2);">Fast solver everywhere: quick, but less reliable in critical, rapidly-changing zones.</span></div>
-              <div class="row" style="align-items:flex-start; gap:10px;"><span data-icon="checkcircle" style="width:16px;height:16px;flex:none;color:var(--safe);margin-top:2px;"></span><span style="font-size:12.3px;color:var(--ink-2);">Adaptive: targets full accuracy where it changes the outcome, speed everywhere else.</span></div>
-            </div>
-          </div>
-
-          <div class="panel panel-pad">
-            <h3 style="font-family:var(--f-display); font-size:14px; margin-bottom:10px;">Problem statement</h3>
-            <div class="kv-list">
-              <div class="kv-row"><span class="k">ID</span><span class="v">SIH26161</span></div>
-              <div class="kv-row"><span class="k">Title</span><span class="v" style="font-family:var(--f-body); font-weight:500; text-align:right;">Dam Break Inundation Modelling</span></div>
-              <div class="kv-row"><span class="k">Team</span><span class="v" style="font-family:var(--f-body); font-weight:500;">Creative Crew</span></div>
-              <div class="kv-row"><span class="k">Project</span><span class="v" style="font-family:var(--f-body); font-weight:500;">HydroGuard</span></div>
-              <div class="kv-row"><span class="k">Build</span><span class="v" style="font-family:var(--f-body); font-weight:500;">Software-only</span></div>
-            </div>
-          </div>
-
-          <div class="notice">
-            <span data-icon="alerttriangle"></span>
-            <div>HydroGuard is a demonstration / MVP. It does not claim full accuracy or validated real-world performance — see Benchmark for illustrative figures only.</div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-  </main>
 </div>
 
-<div class="toast-wrap" id="toastWrap"></div>
-
-<script src="js/data.js"></script>
-<script src="js/render.js"></script>
-<script src="js/app.js"></script>
 </body>
 </html>
