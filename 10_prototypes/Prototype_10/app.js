@@ -1,0 +1,6 @@
+const $=s=>document.querySelector(s);
+const state={depth:4.8,velocity:6.2,arrival:18};
+function metrics(){['depth','velocity','arrival'].forEach(id=>{const e=$('#'+id);if(e)e.textContent=id==='depth'?state.depth.toFixed(1)+' m':id==='velocity'?state.velocity.toFixed(1)+' m/s':state.arrival+' min'})}
+function run(){const b=$('#run'),p=$('#progress'),s=$('#status');b.disabled=true;b.textContent='SIMULATING…';let t=0;const x=setInterval(()=>{t++;state.depth=1.8+Math.min(3,t*.35);state.velocity=2.2+Math.min(4,t*.5);state.arrival=Math.max(3,28-t*2);metrics();if(p)p.style.width=Math.min(100,t*10)+'%';if(t>=10){clearInterval(x);b.disabled=false;b.textContent='RUN SIMULATION';if(s)s.textContent='Simulation complete — DEMO result'}},180)}
+function reset(){state.depth=4.8;state.velocity=6.2;state.arrival=18;metrics();if($('#progress'))$('#progress').style.width='0%';if($('#status'))$('#status').textContent='Ready for scenario'}
+document.addEventListener('DOMContentLoaded',()=>{$('#run')?.addEventListener('click',run);$('#reset')?.addEventListener('click',reset);metrics()});
