@@ -1,5 +1,5 @@
-# HydroGuard Prototype 08 — Mobile First
+# HydroGuard Prototype 08 — Indigo Analytics
 
-Responsive field-operations interface.
+Same reference workflow and information as the supplied SIH26161 dam-break flood simulation concept map, with only the visual system redesigned: typography, palette, spacing, card treatment, shadows and presentation polish.
 
-Open `index.html` in a modern browser. Static cross-platform prototype; simulation values are illustrative demo values.
+Open `index.html` in a browser. Print mode is optimized for a wide presentation sheet.
