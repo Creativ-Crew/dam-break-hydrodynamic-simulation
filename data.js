@@ -148,15 +148,15 @@ var PIPELINE_STAGES = [
 /* Critical asset register (DEMO)                                        */
 /* ---------------------------------------------------------------------- */
 var ASSETS = [
-  { id: 'a1', name: 'NH-94 Bridge',                type: 'Bridge',       icon: 'bridge',    distanceKm: 0.2, exposure: 1.00 },
-  { id: 'a2', name: 'Riverside Colony',            type: 'Residential',  icon: 'home',      distanceKm: 0.4, exposure: 0.95 },
-  { id: 'a3', name: 'Hydro Colony Substation',      type: 'Infrastructure', icon: 'building', distanceKm: 0.5, exposure: 0.85 },
-  { id: 'a4', name: 'Old Town Market Road',         type: 'Road',         icon: 'route',     distanceKm: 0.6, exposure: 0.80 },
-  { id: 'a5', name: 'Govt. Senior Secondary School', type: 'School',      icon: 'cap',       distanceKm: 0.8, exposure: 0.68 },
-  { id: 'a6', name: 'District Hospital',            type: 'Hospital',     icon: 'plussquare', distanceKm: 1.1, exposure: 0.55 },
-  { id: 'a7', name: 'Sector B Residential Block',   type: 'Residential',  icon: 'home',      distanceKm: 1.6, exposure: 0.40 },
-  { id: 'a8', name: 'Downstream Farming Settlement', type: 'Residential', icon: 'home',      distanceKm: 2.4, exposure: 0.28 },
-  { id: 'a9', name: 'Confluence Check Post',        type: 'Infrastructure', icon: 'building', distanceKm: 3.1, exposure: 0.18 }
+  { id: 'a1', name: 'NH-94 Bridge',                type: 'Bridge',       icon: 'bridge',    short: 'NH-94',       distanceKm: 0.2, exposure: 1.00 },
+  { id: 'a2', name: 'Riverside Colony',            type: 'Residential',  icon: 'home',      short: 'Riverside',   distanceKm: 0.4, exposure: 0.95 },
+  { id: 'a3', name: 'Hydro Colony Substation',      type: 'Infrastructure', icon: 'building', short: 'Substation', distanceKm: 0.5, exposure: 0.85 },
+  { id: 'a4', name: 'Old Town Market Road',         type: 'Road',         icon: 'route',     short: 'Market Rd',  distanceKm: 0.6, exposure: 0.80 },
+  { id: 'a5', name: 'Govt. Senior Secondary School', type: 'School',      icon: 'cap',       short: 'School',     distanceKm: 0.8, exposure: 0.68 },
+  { id: 'a6', name: 'District Hospital',            type: 'Hospital',     icon: 'plussquare', short: 'Hospital',   distanceKm: 1.1, exposure: 0.55 },
+  { id: 'a7', name: 'Sector B Residential Block',   type: 'Residential',  icon: 'home',      short: 'Sector B',   distanceKm: 1.6, exposure: 0.40 },
+  { id: 'a8', name: 'Downstream Farming Settlement', type: 'Residential', icon: 'home',      short: 'Downstream', distanceKm: 2.4, exposure: 0.28 },
+  { id: 'a9', name: 'Confluence Check Post',        type: 'Infrastructure', icon: 'building', short: 'Confluence', distanceKm: 3.1, exposure: 0.18 }
 ];
 
 /* ---------------------------------------------------------------------- */

@@ -228,6 +228,39 @@ function updateModeReadouts(){
 }
 
 /* ---------------------------------------------------------------------- */
+/* Sync Scenario Builder form fields FROM state (used by reset / re-run)  */
+/* ---------------------------------------------------------------------- */
+function syncScenarioForm(){
+  var s = HG.scenario;
+  document.getElementById('inDamHeight').value = s.damHeight;
+  document.getElementById('valDamHeight').textContent = s.damHeight + ' m';
+  document.getElementById('inBreachWidth').value = s.breachWidth;
+  document.getElementById('valBreachWidth').textContent = s.breachWidth + ' m';
+  document.getElementById('inBreachTime').value = s.breachTime;
+  document.getElementById('valBreachTime').textContent = s.breachTime + ' min';
+  document.getElementById('inWaterLevel').value = s.waterLevel;
+  document.getElementById('valWaterLevel').textContent = s.waterLevel + ' m';
+  document.getElementById('inDuration').value = s.duration;
+  document.getElementById('valDuration').textContent = s.duration + ' hr';
+
+  var demSel = document.getElementById('inDem');
+  var demKnown = Array.from(demSel.options).some(function(o){ return o.value === s.dem; });
+  demSel.value = demKnown ? s.dem : 'custom';
+  document.getElementById('demFileRow').style.display = demKnown ? 'none' : 'flex';
+  if (!demKnown) document.getElementById('demFileName').value = s.dem;
+
+  var riverSel = document.getElementById('inRiver');
+  var riverKnown = Array.from(riverSel.options).some(function(o){ return o.value === s.river; });
+  riverSel.value = riverKnown ? s.river : 'custom';
+  document.getElementById('riverFileRow').style.display = riverKnown ? 'none' : 'flex';
+  if (!riverKnown) document.getElementById('riverFileName').value = s.river;
+
+  setSegmentedActive(document.getElementById('modeSegmented'), s.mode);
+  updateModeReadouts();
+  renderScenarioSummary();
+}
+
+/* ---------------------------------------------------------------------- */
 /* Scenario summary (Mission Control)                                     */
 /* ---------------------------------------------------------------------- */
 function renderScenarioSummary(){
@@ -294,7 +327,6 @@ function syncStatusUI(){
   simBadge.className = 'badge';
 
   if (HG.sim.status === 'idle'){
-    dot.classList.add();
     text.innerHTML = '<span class="full">Idle — no active run</span>';
     kpiBadge.classList.add('badge-idle'); kpiBadge.textContent = 'Idle';
     document.getElementById('kpiStatusSub').textContent = 'No run started yet';
@@ -629,26 +661,27 @@ function setupBenchmark(){
   });
 }
 
-function benchBar(name, value, maxValue, color, unit){
-  var pct = clamp((value / maxValue) * 100, 2, 100);
+function benchBar(name, rawValue, maxValue, color, displayText){
+  var pct = clamp((rawValue / maxValue) * 100, 2, 100);
   return '<div class="bench-bar-row"><span class="name">' + name + '</span>' +
     '<div class="bench-bar-track"><div class="bench-bar-fill" style="width:' + pct.toFixed(1) + '%; background:' + color + ';"></div></div>' +
-    '<span class="bench-bar-val">' + value + unit + '</span></div>';
+    '<span class="bench-bar-val">' + displayText + '</span></div>';
 }
 
 function renderBenchmark(){
   var mode = MODE_PRESETS[HG.benchMode];
   var ref = CONVENTIONAL_REF;
+  var gradient = 'linear-gradient(90deg, var(--blue), var(--cyan))';
 
   var maxRuntime = Math.max(mode.runtimeSec, ref.runtimeSec);
   document.getElementById('benchRuntime').innerHTML =
-    benchBar('HydroGuard (' + mode.label + ')', mode.runtimeSec, maxRuntime, 'linear-gradient(90deg, var(--blue), var(--cyan))', ' s') +
-    benchBar('Conventional', ref.runtimeSec, maxRuntime, 'var(--ink-4)', ' s');
+    benchBar('HydroGuard (' + mode.label + ')', mode.runtimeSec, maxRuntime, gradient, '~' + mode.runtimeSec + ' s') +
+    benchBar('Conventional', ref.runtimeSec, maxRuntime, 'var(--ink-4)', '~' + ref.runtimeSec + ' s');
 
   var maxCells = Math.max(mode.cells, ref.cells);
   document.getElementById('benchCells').innerHTML =
-    benchBar('HydroGuard (' + mode.label + ')', fmtInt(mode.cells), maxCells, 'linear-gradient(90deg, var(--blue), var(--cyan))', '').replace(fmtInt(mode.cells) + '<', fmtInt(mode.cells) + '<') +
-    benchBar('Conventional', fmtInt(ref.cells), maxCells, 'var(--ink-4)', '');
+    benchBar('HydroGuard (' + mode.label + ')', mode.cells, maxCells, gradient, fmtInt(mode.cells)) +
+    benchBar('Conventional', ref.cells, maxCells, 'var(--ink-4)', fmtInt(ref.cells));
 
   document.getElementById('benchTableBody').innerHTML =
     '<tr><td class="primary-cell">Runtime (demo)</td><td class="mono-cell">~' + mode.runtimeSec + ' s</td><td class="mono-cell">~' + ref.runtimeSec + ' s</td><td><span class="badge badge-demo">DEMO</span></td></tr>' +
@@ -780,25 +813,8 @@ function resetDemoData(){
   HG.benchMode = 'balanced';
   HG.map = { zoom: 1, layers: { depth: true, velocity: false, arrival: false, roads: true, buildings: true, assets: true, risk: false } };
 
-  document.getElementById('inDamHeight').value = HG.scenario.damHeight;
-  document.getElementById('valDamHeight').textContent = HG.scenario.damHeight + ' m';
-  document.getElementById('inBreachWidth').value = HG.scenario.breachWidth;
-  document.getElementById('valBreachWidth').textContent = HG.scenario.breachWidth + ' m';
-  document.getElementById('inBreachTime').value = HG.scenario.breachTime;
-  document.getElementById('valBreachTime').textContent = HG.scenario.breachTime + ' min';
-  document.getElementById('inWaterLevel').value = HG.scenario.waterLevel;
-  document.getElementById('valWaterLevel').textContent = HG.scenario.waterLevel + ' m';
-  document.getElementById('inDuration').value = HG.scenario.duration;
-  document.getElementById('valDuration').textContent = HG.scenario.duration + ' hr';
-  document.getElementById('inDem').value = HG.scenario.dem;
-  document.getElementById('inRiver').value = HG.scenario.river;
-  document.getElementById('demFileRow').style.display = 'none';
-  document.getElementById('riverFileRow').style.display = 'none';
-
-  setSegmentedActive(document.getElementById('modeSegmented'), HG.scenario.mode);
+  syncScenarioForm();
   setSegmentedActive(document.getElementById('benchModeSegmented'), HG.benchMode);
-  updateModeReadouts();
-  renderScenarioSummary();
 
   document.getElementById('kpiDepthVal').innerHTML = '—<span class="unit">m</span>';
   document.getElementById('kpiDepthSub').textContent = 'Run a simulation to populate';
@@ -869,6 +885,7 @@ function setupGlobalEvents(){
   document.getElementById('rerunBtn').addEventListener('click', function(){
     if (!HG.runHistory.length){ toast('No previous scenario to re-run yet.', true); return; }
     HG.scenario = Object.assign({}, HG.runHistory[0].scenario);
+    syncScenarioForm();
     startSimulation();
   });
 
