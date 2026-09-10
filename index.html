@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HydroGuard — Dam Break Flood Simulation</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="app">
+  <aside class="sidebar">
+    <div class="brand">
+      <div class="brand-mark"><span>C</span><span>C</span></div>
+      <div><b>HydroGuard</b><small>SIH26161 • Creative Crew</small></div>
+    </div>
+    <nav>
+      <button class="nav active" data-page="dashboard">⌂ <span>Dashboard</span></button>
+      <button class="nav" data-page="scenario">◈ <span>Scenario Builder</span></button>
+      <button class="nav" data-page="simulation">▶ <span>Simulation</span></button>
+      <button class="nav" data-page="risk">⚠ <span>Risk Analysis</span></button>
+      <button class="nav" data-page="benchmark">▦ <span>Benchmark</span></button>
+      <button class="nav" data-page="report">↗ <span>Report</span></button>
+    </nav>
+    <div class="side-bottom">
+      <div class="engine-pill"><i></i> Engine ready</div>
+      <small>Software-only prototype</small>
+    </div>
+  </aside>
+
+  <main>
+    <header>
+      <div>
+        <div class="eyebrow">DAM-BREAK HYDRODYNAMIC FLOOD SIMULATION</div>
+        <h1 id="pageTitle">Mission Control</h1>
+      </div>
+      <div class="header-actions">
+        <span class="status"><i></i> System Ready</span>
+        <button class="outline" onclick="showToast('Prototype report generated')">Export Report</button>
+      </div>
+    </header>
+
+    <section id="dashboard" class="page active">
+      <div class="hero">
+        <div>
+          <span class="tag">ADAPTIVE MULTI-FIDELITY ENGINE</span>
+          <h2>Simulate where it matters.<br><em>Refine when physics demands it.</em></h2>
+          <p>A decision-focused flood simulation workflow that concentrates computational effort around the breach, rapid-flow corridors and critical assets.</p>
+          <button class="primary" onclick="go('scenario')">Create Scenario →</button>
+        </div>
+        <div class="hero-diagram">
+          <div class="dam"></div><div class="water"></div>
+          <div class="grid coarse"></div><div class="grid fine"></div>
+          <span class="flow-label">ADAPTIVE REFINEMENT</span>
+        </div>
+      </div>
+
+      <div class="stats">
+        <div class="stat"><small>ACTIVE SCENARIO</small><strong id="statScenario">—</strong><span>Ready for setup</span></div>
+        <div class="stat"><small>GRID STRATEGY</small><strong>Adaptive</strong><span>Coarse → critical refinement</span></div>
+        <div class="stat"><small>SOLVER MODE</small><strong>Hybrid</strong><span>Fast + Full SWE</span></div>
+        <div class="stat"><small>OUTPUTS</small><strong>3 Layers</strong><span>Depth • Velocity • Arrival</span></div>
+      </div>
+
+      <div class="section-title"><h3>How the engine works</h3><span>Core pipeline</span></div>
+      <div class="pipeline">
+        <div><b>01</b><strong>Input</strong><small>DEM + breach + scenario</small></div>
+        <div class="arrow">→</div>
+        <div><b>02</b><strong>Adaptive Grid</strong><small>Refine high-impact cells</small></div>
+        <div class="arrow">→</div>
+        <div><b>03</b><strong>Solver Switch</strong><small>Fast / Full SWE</small></div>
+        <div class="arrow">→</div>
+        <div><b>04</b><strong>Accuracy Guard</strong><small>Validate & refine</small></div>
+        <div class="arrow">→</div>
+        <div><b>05</b><strong>Decision Map</strong><small>Risk + evacuation</small></div>
+      </div>
+
+      <div class="notice">
+        <div>✦</div><div><b>Prototype principle</b><p>Speed is achieved by avoiding unnecessary high-fidelity computation—not by sacrificing physics in critical zones.</p></div>
+      </div>
+    </section>
+
+    <section id="scenario" class="page">
+      <div class="section-title"><h3>Scenario Builder</h3><span>Step 1 of 4</span></div>
+      <div class="form-grid">
+        <div class="card">
+          <div class="card-head"><span class="num">01</span><div><b>Dam Parameters</b><small>Define the initial condition</small></div></div>
+          <label>Dam / Reservoir name<input id="damName" value="Ukai Demo Scenario"></label>
+          <div class="two"><label>Reservoir level (m)<input id="level" type="number" value="105"></label><label>Dam height (m)<input id="height" type="number" value="92"></label></div>
+          <div class="two"><label>Breach width (m)<input id="breach" type="number" value="45"></label><label>Formation time (min)<input id="formation" type="number" value="12"></label></div>
+        </div>
+        <div class="card">
+          <div class="card-head"><span class="num">02</span><div><b>Terrain & GIS</b><small>Simulation domain</small></div></div>
+          <div class="upload" onclick="document.getElementById('file').click()"><div class="upload-icon">↑</div><b>Drop DEM / GeoTIFF here</b><small>or click to select a file</small><span id="fileName">No file selected</span></div>
+          <input id="file" type="file" hidden onchange="document.getElementById('fileName').textContent=this.files[0]?.name||'No file selected'">
+          <div class="chips"><span>DEM</span><span>River Network</span><span>Buildings</span><span>Roads</span></div>
+        </div>
+        <div class="card">
+          <div class="card-head"><span class="num">03</span><div><b>Engine Mode</b><small>Choose fidelity target</small></div></div>
+          <div class="mode selected" onclick="selectMode(this,'Rapid')"><b>Rapid</b><span>Fast screening • coarse base grid</span><strong>⚡</strong></div>
+          <div class="mode" onclick="selectMode(this,'Balanced')"><b>Balanced</b><span>Adaptive refinement • recommended</span><strong>◈</strong></div>
+          <div class="mode" onclick="selectMode(this,'High Accuracy')"><b>High Accuracy</b><span>Full SWE focus • validation</span><strong>◎</strong></div>
+        </div>
+        <div class="card">
+          <div class="card-head"><span class="num">04</span><div><b>Critical Zones</b><small>Where extra accuracy matters</small></div></div>
+          <label class="check"><input type="checkbox" checked> Dense population</label>
+          <label class="check"><input type="checkbox" checked> Bridges & culverts</label>
+          <label class="check"><input type="checkbox" checked> Hospitals / schools</label>
+          <label class="check"><input type="checkbox"> Industrial assets</label>
+          <button class="primary full" onclick="createScenario()">Save & Preview Grid →</button>
+        </div>
+      </div>
+    </section>
+
+    <section id="simulation" class="page">
+      <div class="section-title"><h3>Live Simulation</h3><span id="simStatus">Waiting for scenario</span></div>
+      <div class="sim-layout">
+        <div class="map-card">
+          <div class="map-toolbar"><div class="legend"><span class="dot depth"></span> Flood depth <span class="dot velocity"></span> High velocity <span class="dot critical"></span> Critical asset</div><div class="map-actions"><button onclick="toggleLayer('depth')">Depth</button><button onclick="toggleLayer('velocity')">Velocity</button></div></div>
+          <div class="map">
+            <div class="terrain t1"></div><div class="terrain t2"></div><div class="river"></div><div class="flood f1"></div><div class="flood f2"></div>
+            <div class="road r1"></div><div class="road r2"></div>
+            <div class="dam-wall"></div><div class="breach-mark"></div>
+            <div class="asset hospital">✚</div><div class="asset school">◆</div>
+            <div class="scale">0 ───────── 2 km</div>
+            <div class="north">N ↑</div>
+          </div>
+          <div class="timeline"><button onclick="playSim()">▶</button><input id="time" type="range" min="0" max="60" value="0" oninput="updateTime(this.value)"><span id="timeLabel">00:00</span></div>
+        </div>
+        <div class="control-card">
+          <div class="live"><i></i> LIVE ENGINE</div>
+          <h3>Adaptive computation</h3>
+          <div class="meter"><span id="progress"></span></div>
+          <div class="solver-box"><small>CURRENT SOLVER</small><b id="solver">Fast solver</b><span id="solverWhy">Low-complexity region</span></div>
+          <div class="metric-row"><span>Cells processed</span><b id="cells">0</b></div>
+          <div class="metric-row"><span>Refined cells</span><b id="refined">0</b></div>
+          <div class="metric-row"><span>Max depth</span><b id="maxDepth">0.0 m</b></div>
+          <div class="metric-row"><span>Peak velocity</span><b id="velocity">0.0 m/s</b></div>
+          <button class="primary full" onclick="startSimulation()">Start / Resume Simulation</button>
+          <button class="outline full" onclick="go('benchmark')">View Benchmark →</button>
+        </div>
+      </div>
+    </section>
+
+    <section id="risk" class="page">
+      <div class="section-title"><h3>Risk Analysis</h3><span>Decision support</span></div>
+      <div class="risk-grid">
+        <div class="risk-score"><small>OVERALL RISK</small><strong>HIGH</strong><span>Prototype assessment</span><div class="risk-bar"><i></i></div></div>
+        <div class="card"><small>AFFECTED AREA</small><h2>18.4 km²</h2><span>Estimated inundation footprint</span></div>
+        <div class="card"><small>MAX DEPTH</small><h2>7.8 m</h2><span>Critical low-lying zone</span></div>
+        <div class="card"><small>PEAK VELOCITY</small><h2>5.6 m/s</h2><span>Near breach corridor</span></div>
+      </div>
+      <div class="card table-card"><div class="card-head"><div><b>Critical Asset Exposure</b><small>Prioritise emergency response</small></div></div>
+        <table><tr><th>Asset</th><th>Risk</th><th>Depth</th><th>Arrival</th><th>Action</th></tr>
+        <tr><td>Hospital Zone A</td><td><span class="badge high">HIGH</span></td><td>3.4 m</td><td>18 min</td><td>Evacuate</td></tr>
+        <tr><td>Bridge B-07</td><td><span class="badge high">HIGH</span></td><td>5.1 m</td><td>11 min</td><td>Close</td></tr>
+        <tr><td>School Zone C</td><td><span class="badge med">MEDIUM</span></td><td>1.7 m</td><td>29 min</td><td>Monitor</td></tr>
+        </table>
+      </div>
+    </section>
+
+    <section id="benchmark" class="page">
+      <div class="section-title"><h3>Performance & Accuracy</h3><span>Benchmark lab</span></div>
+      <div class="benchmark-hero">
+        <div><small>DEMO BENCHMARK — NOT MEASURED</small><h2>Prove the advantage.</h2><p>Use the same terrain, breach, boundary conditions and simulation duration for every model.</p></div>
+        <div class="big-number">2.8×<small>illustrative speedup</small></div>
+      </div>
+      <div class="card table-card"><table>
+        <tr><th>Metric</th><th>Reference model</th><th>Adaptive prototype</th><th>Target</th></tr>
+        <tr><td>Runtime</td><td>28 min</td><td>10 min</td><td>↓ faster</td></tr>
+        <tr><td>Flood extent IoU</td><td>1.00</td><td>0.96</td><td>≥ 0.95</td></tr>
+        <tr><td>Depth RMSE</td><td>—</td><td>0.18 m</td><td>≤ 0.25 m</td></tr>
+        <tr><td>Arrival-time MAE</td><td>—</td><td>2.7 min</td><td>≤ 5 min</td></tr>
+        <tr><td>Mass-balance error</td><td>—</td><td>0.8%</td><td>≤ 1%</td></tr>
+      </table></div>
+      <div class="notice"><div>!</div><div><b>Important for SIH</b><p>These values are UI placeholders. Replace them with results from reproducible test cases before presenting a “faster and more accurate” claim.</p></div></div>
+    </section>
+
+    <section id="report" class="page">
+      <div class="section-title"><h3>Simulation Report</h3><span>Presentation-ready summary</span></div>
+      <div class="report-sheet">
+        <div class="report-head"><div class="brand-mark"><span>C</span><span>C</span></div><div><h2>HydroGuard</h2><small>Dam-Break Hydrodynamic Flood Simulation • SIH26161</small></div><span class="report-status">PROTOTYPE</span></div>
+        <hr>
+        <h3>Scenario</h3><p id="reportScenario">Ukai Demo Scenario</p>
+        <div class="report-cols"><div><small>ENGINE</small><b>Adaptive Multi-Fidelity</b></div><div><small>MODE</small><b id="reportMode">Rapid</b></div><div><small>OUTPUTS</small><b>Depth / Velocity / Arrival</b></div></div>
+        <h3>Decision Summary</h3><ul><li>Identify rapid-flow corridors near the breach.</li><li>Refine computation around critical assets.</li><li>Generate depth, velocity and arrival-time layers.</li><li>Run validation and benchmark before operational deployment.</li></ul>
+        <button class="primary" onclick="window.print()">Print / Save PDF</button>
+      </div>
+    </section>
+  </main>
+</div>
+<div id="toast"></div>
+<script src="app.js"></script>
+</body>
+</html>
